@@ -1,0 +1,36 @@
+class Ruta:
+    def __init__(self, nombre, capacidad, precio):
+        self.nombre = nombre
+        self.capacidad = capacidad
+        self.precio = precio
+        self.asientos_disponibles = capacidad
+
+    def vender_pasaje(self, cantidad):
+        if cantidad > self.asientos_disponibles:
+            print("Lo siento, no hay suficientes asientos disponibles.")
+            return
+        total = cantidad * self.precio
+        self.asientos_disponibles -= cantidad
+        print(f"Ha comprado {cantidad} pasajes en la ruta {self.nombre}.")
+        print(f"Total a pagar: {total} pesos.")
+        print(f"Quedan {self.asientos_disponibles} asientos disponibles.")
+
+# Definimos las rutas
+ruta_platinum = Ruta("Auto Bus Platinum", 22, 5000)
+ruta_gold = Ruta("Auto Bus Gold", 15, 4000)
+
+# Ejemplo de venta de pasajes
+print("Bienvenido al sistema de venta de pasajes.")
+print("Rutas disponibles:")
+print("1. Auto Bus Platinum (5 pasajeros)")
+print("2. Auto Bus Gold (3 pasajeros)")
+opcion = int(input("Seleccione la ruta (1 o 2): "))
+
+if opcion == 1:
+    cantidad_pasajes = int(input("¿Cuántos pasajes desea comprar?: "))
+    ruta_platinum.vender_pasaje(cantidad_pasajes)
+elif opcion == 2:
+    cantidad_pasajes = int(input("¿Cuántos pasajes desea comprar?: "))
+    ruta_gold.vender_pasaje(cantidad_pasajes)
+else:
+    print("Opción inválida.")
